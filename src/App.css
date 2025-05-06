@@ -1,5 +1,22 @@
 .App {
+  width: 300px;
+  padding: 10px;
   text-align: center;
+}
+table {
+  width: 90%;
+  border-collapse: collapse;
+}
+td,
+th {
+  border: 1px solid #ccc;
+  padding: 4px;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-logo {
