@@ -31,7 +31,15 @@ function App() {
       setHistory(data.selectionHistory || []);
     });
   }, []);
-
+  useEffect(() => {
+    const handleStorage = (changes, area) => {
+      if (area === "local" && changes.selectionHistory) {
+        setHistory(changes.selectionHistory.newValue);
+      }
+    };
+    chrome.storage.onChanged.addListener(handleStorage);
+    return () => chrome.storage.onChanged.removeListener(handleStorage);
+  }, []);
   return (
     <div className="App">
       <header className="App-header">

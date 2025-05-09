@@ -1,6 +1,7 @@
 const HISTORY_KEY = "selectionHistory";
 
 chrome.runtime.onInstalled.addListener(() => {
+  chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true });
   chrome.storage.local.set({ [HISTORY_KEY]: [] });
 });
 

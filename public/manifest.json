@@ -3,7 +3,7 @@
   "name": "React-Evaluator-Extension",
   "version": "1.0.0",
   "description": "",
-  "permissions": ["scripting", "activeTab", "storage"],
+  "permissions": ["scripting", "activeTab", "storage", "sidePanel"],
   "background": {
     "service_worker": "background.js"
   },
@@ -14,14 +14,10 @@
       "run_at": "document_idle"
     }
   ],
-  "action": {
-    "default_popup": "index.html",
-    "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
-    }
+  "side_panel": {
+    "default_path": "index.html"
   },
+
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
