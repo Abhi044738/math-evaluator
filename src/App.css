@@ -1,22 +1,32 @@
 .App {
-  width: 300px;
-  padding: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+}
+
+.color-container {
+  border-radius: 1rem;
+  background-color: #36454f;
+}
+.container {
+  height: 35rem;
+}
+body {
+  background-color: #101314;
+  color: #fffffa;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
 }
 table {
   width: 90%;
   border-collapse: collapse;
+  margin: auto;
 }
 td,
 th {
   border: 1px solid #ccc;
   padding: 4px;
-}
-
-.App-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .App-logo {
@@ -28,17 +38,6 @@ th {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {

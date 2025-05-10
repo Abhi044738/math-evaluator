@@ -42,12 +42,20 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Evaluator</h1>
-        <button onClick={handleToggle}>{running ? "Stop" : "Start"}</button>
-        {statusMessage && <p>{statusMessage}</p>}
+      <h2 className="color-container">Evaluator</h2>
 
+      <div className="color-container container">
         <h2>History</h2>
+        <button onClick={handleToggle}>{running ? "Stop" : "Start"}</button>
+        {statusMessage === "" ? (
+          <div>
+            <br />
+            <br />
+          </div>
+        ) : (
+          <p>{statusMessage}</p>
+        )}
+
         <table>
           <thead>
             <tr>
@@ -69,7 +77,7 @@ function App() {
             ))}
           </tbody>
         </table>
-      </header>
+      </div>
     </div>
   );
 }
