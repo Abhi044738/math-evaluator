@@ -1,12 +1,11 @@
 let listening = false;
+chrome.runtime.sendMessage({ type: "getAppStatus" }, (status) => {
+  listening = status;
+});
 
-chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (msg.type === "Started") {
-    listening = true;
-    sendResponse({ status: "OK" });
-  } else if (msg.type === "Stopped") {
-    listening = false;
-    sendResponse({ status: "OK" });
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg.type === "appStatusChanged") {
+    listening = msg.value;
   }
 });
 
@@ -39,7 +38,10 @@ document.addEventListener("mouseup", (e) => {
   });
   icon.className = "math-icon";
   document.body.appendChild(icon);
-
+  setTimeout(
+    () => document.querySelectorAll(".math-icon").forEach((el) => el.remove()),
+    30000
+  );
   chrome.runtime.sendMessage({
     type: "Pending",
     text: textSelected,
@@ -48,7 +50,7 @@ document.addEventListener("mouseup", (e) => {
   });
 
   icon.addEventListener("click", async () => {
-    let Output = "Error";
+    let Output;
     try {
       const response = await fetch("https://api.mathjs.org/v4", {
         method: "POST",
@@ -59,6 +61,7 @@ document.addEventListener("mouseup", (e) => {
       Output = data.result;
     } catch (error) {
       console.error(error);
+      Output = "Error";
     }
     icon.textContent = `done ${textSelected} = ${Output}`;
     icon.style.padding = "10px";
